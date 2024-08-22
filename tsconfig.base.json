@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@nx-playground/automation": ["libs/automation/src/index.ts"],
       "@nx-playground/my-lib": ["libs/my-lib/src/index.ts"]
     }
   },

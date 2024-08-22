@@ -6,6 +6,31 @@
   "sourceRoot": "apps/my-app/src",
   "tags": [],
   "targets": {
+    "watch-test": {
+      "executor": "nx:run-commands",
+        "options": {
+            "commands": [
+            {"command": "nx build my-app --watch"},
+            ],
+            "parallel": true
+        }
+    },
+    "custom-workflow": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {"command": "nx build my-app"},
+          {"command": "nx test my-app"}
+        ],
+        "parallel": false
+      }
+    },
+    "echo": {
+      "executor": "@nx-playground/automation:echo",
+      "options": {
+        "textToEcho": "Hello World"
+      }
+    },
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
