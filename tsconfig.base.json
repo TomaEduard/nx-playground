@@ -16,7 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@nx-playground/automation": ["libs/automation/src/index.ts"],
-      "@nx-playground/my-lib": ["libs/my-lib/src/index.ts"]
+      "@nx-playground/my-lib": ["libs/my-lib/src/index.ts"],
+      "@nx-playground/shared-utils": ["libs/shared-utils/src/index.ts"],
+      "remote1/Routes": ["apps/remote1/src/app/remote-entry/entry.routes.ts"],
+      "remote2/Routes": ["apps/remote2/src/app/remote-entry/entry.routes.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
