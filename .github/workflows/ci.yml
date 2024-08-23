@@ -36,14 +36,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run lint
-        run: npx nx run my-app:lint
+      - name: Run affected lint
+        run: npx nx affected:lint --parallel
 
-      - name: Run tests
-        run: npx nx test
+      - name: Run affected tests
+        run: npx nx affected:test --parallel
 
-      - name: Run e2e tests
-        run: npx nx e2e my-app-e2e
+      - name: Run affected e2e tests
+        run: npx nx affected:e2e --parallel
 
-      - name: Build project
-        run: npx nx build my-app
+      - name: Build affected projects
+        run: npx nx affected:build --parallel
