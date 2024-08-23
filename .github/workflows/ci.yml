@@ -18,25 +18,32 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-${{ matrix.node-version }}-
 
       - name: Install dependencies
         run: npm install
 
       - name: Run lint
-        run: nx lint
+        run: npx nx run my-app:lint
 
       - name: Run tests
-        run: nx test
+        run: npx nx test
 
       - name: Run e2e tests
-        run: nx e2e my-app-e2e
+        run: npx nx e2e my-app-e2e
 
       - name: Build project
-        run: nx build my-app
-
+        run: npx nx build my-app
